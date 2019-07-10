@@ -10,5 +10,5 @@ export class Friend {
 
 export class Message {
   who: string;
-  message: string; 
+  messageText: string; 
 }

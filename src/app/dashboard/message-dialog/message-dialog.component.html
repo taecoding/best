@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Message Dialog</h1>
+<div mat-dialog-content>
+  <h3>Please enter a message from {{who}}.</h3>
+  <div class="form-container">
+    <mat-form-field>
+      <textarea matInput placeholder="Textarea" [(ngModel)]="messageText"></textarea>
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="closeDialog()">Ok</button>
+</div>
