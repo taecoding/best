@@ -1,7 +1,57 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  
-  <mat-grid-list cols="4" rowHeight="250px">
+
+  <mat-drawer-container class="example-container">
+    <mat-drawer #friendDetails mode="side" position="end">
+      <mat-tab-group class="mat-tab-fill-height">
+        <mat-tab label="About">
+          <section fxLayout="column" fxLayoutAlign="start stretch">
+            <mat-card class="details-card" mat-elevation-z8>
+              <mat-card-title>Name</mat-card-title>
+              <mat-card-content>
+                {{selectedFriend?.name}}
+              </mat-card-content>
+            </mat-card>
+            <mat-card class="details-card" mat-elevation-z8>
+              <mat-card-title>Status</mat-card-title>
+              <mat-card-content>
+                {{selectedFriend?.status}}
+              </mat-card-content>
+            </mat-card>
+            <mat-card class="details-card" mat-elevation-z8>
+              <mat-card-title>About</mat-card-title>
+              <mat-card-content>
+                {{selectedFriend?.about}}
+              </mat-card-content>
+            </mat-card>
+          </section>
+          <section class="tab-action">
+            <button mat-fab color="accent" (click)="friendDetails.close()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </section>
+        </mat-tab>
+        <mat-tab label="Messages">
+          <mat-card *ngFor="let message of selectedFriend?.messages">
+            <mat-card-title>{{message.who}}}</mat-card-title>
+            <mat-card-content>{{message.message}}</mat-card-content>
+          </mat-card>
+        
+          <section class="tab-action" fxLayout="column" fxLayoutGap="10px">
+            <button mat-fab color="accent" (click)="addMessage()">
+              <mat-icon>add</mat-icon>
+            </button>
+            <button mat-fab color="accent" (click)="friendDetails.close()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </section>
+        
+        </mat-tab>
+        <mat-tab label="Photos"> Photos </mat-tab>
+        </mat-tab-group>
+        </mat-drawer>
+
+    <mat-grid-list cols="4" rowHeight="250px">
       <mat-grid-tile
           *ngFor="let friend of friends"
           [colspan]="friend.cols"
@@ -11,10 +61,13 @@
         <mat-grid-tile-footer>
           <h3 mat-line>{{friend.name}}</h3>
           <span mat-line>{{friend.status}}</span>
-          <button mat-icon-button aria-label="info icon">
+          <button mat-icon-button aria-label="info icon" 
+            (click)="showDetails(friend);friendDetails.open()">
               <mat-icon>info</mat-icon>
             </button>
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>
+  </mat-drawer-container>
+
 </div>

@@ -19,3 +19,22 @@
 .dashboard-card-content {
   text-align: center;
 }
+
+.details-card {
+  margin: 12px;
+}
+
+.tab-action {
+  display: inline-block;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.mat-tab-group.mat-tab-fill-height {
+  min-height: 100%;
+}
+
+.mat-tab-body-wrapper {
+  flex-grow: 1;
+}
